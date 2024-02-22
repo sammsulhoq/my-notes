@@ -5,6 +5,57 @@
 
 JavaScript is a programming language that runs on browser using JS engine(Firefox: SpiderMonkey, Chrome: V8) available in all major browsers. Brial Doll used C++ to embed the Chrome's V8 engine and made it available for server-side implementation. This server-side version is called **Node**
 
+## Hoisting [>>](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
+JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code.
+
+Note: Arrow functions defined after invoke, it won't be hoisted.
+
+In colloquial terms, any of the following behaviors may be regarded as hoisting:
+
+1. Being able to use a variable's value in its scope before the line it is declared. ("Value hoisting")
+2. Being able to reference a variable in its scope before the line it is declared, without throwing a ReferenceError, but the value is always undefined. ("Declaration hoisting")
+3. The declaration of the variable causes behavior changes in its scope before the line in which it is declared.
+4. The side effects of a declaration are produced before evaluating the rest of the code that contains it.
+
+The four function declarations above are hoisted with type 1 behavior; var declaration is hoisted with type 2 behavior; let, const, and class declarations (also collectively called lexical declarations) are hoisted with type 3 behavior; import declarations are hoisted with type 1 and type 4 behavior.
+
+## Scope [>>](https://developer.mozilla.org/en-US/docs/Glossary/Scope)
+
+The scope is the current context of execution in which values and expressions are "visible" or can be referenced. If a variable or expression is not in the current scope, it will not be available for use. Scopes can also be layered in a hierarchy, so that child scopes have access to parent scopes, but not vice versa.
+
+JavaScript has the following kinds of scopes:
+
+1. Global scope: The default scope for all code running in script mode.
+2. Module scope: The scope for code running in module mode.
+3. Function scope: The scope created with a function.
+
+In addition, variables declared with let or const can belong to an additional scope:
+
+4. Block scope: The scope created with a pair of curly braces (a block).
+```
+{
+  var x = 1;
+}
+console.log(x); // 1
+```
+
+## Closures [>>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+
+A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+
+```
+function makeFunc() {
+  const name = "Mozilla";
+  function displayName() {
+    console.log(name);
+  }
+  return displayName;
+}
+
+const myFunc = makeFunc();
+myFunc();
+```
+
 ## Garbage Collection
 Like other programming languages, JS also deploys mechanisms to ensure that the allocated computer memory is freed so that it is not bloated with unused memory allocation. So, while the programming is executing, JS checks which variable is no longer used and it de-allocates that memory. [Read More](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management)
 
