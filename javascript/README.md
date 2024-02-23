@@ -125,7 +125,26 @@ console.log(name.age)       // undefined
 ## Variable Comparison
 In JS we have `>`, `<`, `>=`, `<=`, `==` and `!=` which are commonly used. But, we also have two more comparison operators `===` and `!==` which not only compares the value of the variables but also check the variable types.
 
+Use the following link to know the comparison of commonly used expression:
+https://dorey.github.io/JavaScript-Equality-Table/
+
 > Interestingly, if we compare `undefined` and `null` you will get true. For example: `undefined == null` returns `true`, which makes sense since both lack values.
+
+## Type Coercion [>>](https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion)
+Type coercion is the automatic or implicit conversion of values from one data type to another (such as strings to numbers).
+```
+const value1 = "5";
+const value2 = 9;
+let sum = value1 + value2;
+
+console.log(sum);
+```
+In the above example, JavaScript has coerced the 9 from a number into a string and then concatenated the two values together, resulting in a string of `59`
+
+## Type Conversion [>>](https://developer.mozilla.org/en-US/docs/Glossary/Type_Conversion)
+
+Type conversion (or typecasting) means transfer of data from one data type to another. Implicit conversion happens when the compiler (for compiled languages) or runtime (for script languages like JavaScript) automatically converts data types. The source code can also explicitly require a conversion to take place.
+[Check out this](https://www.freecodecamp.org/news/js-type-coercion-explained-27ba3d9a2839/)
 
 ## Functions
 In JS, if we want to reuse a block of statements to be used later, we wrap then using `function`. 
@@ -234,4 +253,58 @@ Based on what we have learnt so far, we have three ways of doing this:
 (() => {
     // function logic
 })();
+```
+
+## Arrays [>>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+The Array object, as with arrays in other programming languages, enables storing a collection of multiple items under a single variable name, and has members for performing common array operations.
+Array objects cannot use arbitrary strings as element indexes (as in an associative array) but must use nonnegative integers (or their respective string form).
+```
+console.log(years["2"] !== years["02"]);
+```
+Only years['2'] is an actual array index. years['02'] is an arbitrary string property that will not be visited in array iteration.
+
+## Shallow Copy [>>](https://developer.mozilla.org/en-US/docs/Glossary/Shallow_copy)
+ shallow copy of an object is a copy whose properties share the same references (point to the same underlying values) as those of the source object from which the copy was made. As a result, when you change either the source or the copy, you may also cause the other object to change too. That behavior contrasts with the behavior of a deep copy, in which the source and copy are completely independent.
+ More formally, two objects o1 and o2 are shallow copies if:
+
+1. They are not the same object (o1 !== o2).
+2. The properties of o1 and o2 have the same names in the same order.
+3. The values of their properties are equal.
+    Their prototype chains are equal.
+
+## Deep Copy [>>](https://developer.mozilla.org/en-US/docs/Glossary/Deep_copy)
+ A deep copy of an object is a copy whose properties do not share the same references (point to the same underlying values) as those of the source object from which the copy was made. As a result, when you change either the source or the copy, you can be assured you're not causing the other object to change too. That behavior contrasts with the behavior of a shallow copy, in which changes to nested properties in the source or the copy may cause the other object to change too.
+
+Two objects o1 and o2 are structurally equivalent if their observed behaviors are the same. These behaviors include:
+
+1. The properties of o1 and o2 have the same names in the same order.
+2. The values of their properties are structurally equivalent.
+3. Their prototype chains are structurally equivalent (although when we deal with structural equivalence, these objects are usually plain objects, meaning they both inherit from Object.prototype).
+
+## Object [>>](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics)
+An object is a collection of related data and/or functionality. These usually consist of several variables and functions (which are called properties and methods when they are inside objects).
+```
+const person = {
+  name: ["Bob", "Smith"],
+  age: 32,
+  bio: function () {
+    console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years old.`);
+  },
+  introduceSelf: function () {
+    console.log(`Hi! I'm ${this.name[0]}.`);
+  },
+};
+```
+Following are two more ways to define function in the objects:
+```
+const person = {
+  name: ["Bob", "Smith"],
+  age: 32,
+  bio () {
+    console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years old.`);
+  },
+  introduceSelf = () => {
+    console.log(`Hi! I'm ${this.name[0]}.`);
+  },
+};
 ```
